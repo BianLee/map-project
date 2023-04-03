@@ -1,0 +1,38 @@
+[
+    {
+        "city": "Chicago",
+        "growth_from_2000_to_2013": "-6.1%",
+        "latitude": 41.8781136,
+        "longitude": -87.6297982,
+        "population": "2718782",
+        "rank": "3",
+        "state": "Illinois"
+    },
+    {
+        "city": "Boston",
+        "growth_from_2000_to_2013": "9.4%",
+        "latitude": 42.3600825,
+        "longitude": -71.0588801,
+        "population": "645966",
+        "rank": "24",
+        "state": "Massachusetts"
+    },
+    {
+        "city": "Sacramento",
+        "growth_from_2000_to_2013": "17.2%",
+        "latitude": 38.5815719,
+        "longitude": -121.4943996,
+        "population": "479686",
+        "rank": "35",
+        "state": "California"
+    },
+    {
+        "city": "Irvine",
+        "growth_from_2000_to_2013": "61.3%",
+        "latitude": 33.6839473,
+        "longitude": -117.7946942,
+        "population": "236716",
+        "rank": "85",
+        "state": "California"
+    }
+]

@@ -1,0 +1,17 @@
+
+  path {
+    fill: #dbdbdb;
+    stroke: whitesmoke;
+  }
+  .svgContainer {
+    width: 100%;
+    margin-top: 1rem;
+    z-index: 1000;
+    border-color: #D3D3D3;
+    border-style: solid;
+    border-width: 2px;
+  }
+  .svgContainer img {
+    width: 100%;
+  }
+  
