@@ -7,6 +7,8 @@ import svgPanZoom from 'svg-pan-zoom';
 import "./index.css"
 import statesMap from "react-usa-map";
 import UnitedStates from "./data/UnitedStates"
+import SignIn from "./signin"
+import firebase from "./firebaseApp.js"
 
 import {default as AL} from "./data/al.svg";
 import {default as AK} from "./data/ak.svg";
@@ -104,8 +106,6 @@ const USAMap = () => {
 
   };
   const removeFromArr = () => {
-
-    
         var index = 0;
         for (var i = 0; i < array.length; i++) {
           if (array[i][0] == selectedCity) {
@@ -126,6 +126,12 @@ const USAMap = () => {
       }))
     }
   }
+  const handleLogout = () => {
+    firebase.auth().signOut();
+    localStorage.clear();
+    localStorage.setItem("user", "");
+  };
+
 
 
   const handleInputChange = (event) => {
@@ -152,6 +158,8 @@ const USAMap = () => {
       setSelectedCityState(paramTwo);
     }
   }
+
+  
 
   useEffect(() => {  
 
@@ -355,13 +363,16 @@ const USAMap = () => {
     renderComponent = <UnitedStates/>
   }
   return (
+    
     <>
     <center>
     <br/>
     <input type="text" value={inputValue} onKeyPress={handleKeyPress} onChange={handleInputChange} class="bg-gray-200 mx-1 appearance-none border-2 border-gray-200 rounded w-1/3 py-2 px-4 text-gray-700 leading-tight" placeholder="Sacramento"/>
+ 
     <button onClick={addToArr} class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
         Add
     </button>
+  
     <div class="flex flex-row" style={{maxWidth: "95%", justifyContent: "center", textAlign: "left"}}>
       <div className="usa-map-container" style={{flexBasis: selectedCity.length == 0 ? "50%" : "70%", display: "flex", marginTop: "0.5rem"}}>
         <svg ref={ref} width="960" height="600" />
@@ -385,13 +396,13 @@ const USAMap = () => {
     </div>
 
     <br/>
-    <div class="flex grid grid-cols-5  border border-solid border-gray-400 p-1" style={{maxWidth: "95%"}}>
+    <div class="flex grid grid-cols-5 p-1" style={{maxWidth: "95%"}}>
     {
         array[0].length != 0 ? <>
           {array.map((item, i) => {
           return <>
           <div style={{cursor: "pointer", borderStyle: "solid", borderWidth: "2px", borderColor: selectedCity == item[0] ? "#D3D3D3" : "white"}}  class="m-1 p-2 px-2 rounded bg-gray-100 hover:bg-gray-200" data={item[0]} onClick={() => selectCity(item[0], item[1])}>
-            <p key={i}>{item[0]}, {item[1]}</p>
+            <p key={i} class="select-none">{item[0]}, {item[1]}</p>
           </div>
           </>
         })}
@@ -399,6 +410,12 @@ const USAMap = () => {
     }
     </div>
     <br/><br/>
+    <button 
+      class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+      onClick={handleLogout}
+    >
+      Log Out
+    </button>
     </center>
 
     </>
